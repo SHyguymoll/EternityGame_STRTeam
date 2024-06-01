@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://br76acg3nulm6"]
+[gd_scene load_steps=10 format=3 uid="uid://br76acg3nulm6"]
 
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_sth8l"]
 
@@ -15,6 +15,18 @@ ambient_light_color = Color(0.662745, 0.662745, 0.662745, 1)
 material = SubResource("StandardMaterial3D_olwsu")
 size = Vector2(10, 100)
 
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_0brey"]
+radius = 0.445
+height = 1.5
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_45l72"]
+plane = Plane(0, 0, 1, 0)
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_ip4q6"]
+plane = Plane(0, 0, -1, 0)
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_5ow76"]
+
 [node name="Game" type="Node3D"]
 script = ExtResource("1_sth8l")
 
@@ -27,6 +39,27 @@ environment = SubResource("Environment_77kwg")
 [node name="GroundPlaceholder" type="Node3D" parent="."]
 
 [node name="Mesh" type="MeshInstance3D" parent="GroundPlaceholder"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.435, -50)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -50)
 mesh = SubResource("PlaneMesh_bvesg")
 skeleton = NodePath("../..")
+
+[node name="Player" type="CharacterBody3D" parent="."]
+collision_layer = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Player"]
+shape = SubResource("CapsuleShape3D_0brey")
+
+[node name="WorldCameraBounds" type="StaticBody3D" parent="."]
+
+[node name="Left" type="CollisionShape3D" parent="WorldCameraBounds"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.105)
+shape = SubResource("WorldBoundaryShape3D_45l72")
+
+[node name="Right" type="CollisionShape3D" parent="WorldCameraBounds"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.935)
+shape = SubResource("WorldBoundaryShape3D_ip4q6")
+
+[node name="WorldCollide" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WorldCollide"]
+shape = SubResource("WorldBoundaryShape3D_5ow76")
