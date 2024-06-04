@@ -16,12 +16,12 @@ func tick_movement(delta): # wrapper for functions that can be overwritten in ot
 	dodge(delta)
 
 func apply_movement(delta): # handle horizontal movement
-	var input_dir = Input.get_axis("player_right", "player_left")
-	var direction = (host.transform.basis * Vector3(0, 0, input_dir)).normalized()
+	var input_dir = Input.get_axis("player_left", "player_right")
+	var direction = (host.transform.basis * Vector3(input_dir, 0, 0)).normalized()
 	if direction:
-		host.velocity.z = direction.z * host.SPEED
+		host.velocity.x = direction.x * host.SPEED
 	else:
-		host.velocity.z = move_toward(host.velocity.x, 0, host.SPEED)
+		host.velocity.x = move_toward(host.velocity.x, 0, host.SPEED)
 
 func jump(delta):
 	if Input.is_action_just_pressed("player_jump") and host.is_on_floor():
