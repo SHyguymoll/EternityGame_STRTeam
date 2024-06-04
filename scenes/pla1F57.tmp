@@ -1,10 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://cvbltewnhlav"]
+[gd_scene load_steps=7 format=3 uid="uid://cvbltewnhlav"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_tawbh"]
 [ext_resource type="Script" path="res://scripts/state_machine/state_machine.gd" id="2_t3xjw"]
 [ext_resource type="Script" path="res://scripts/state_machine/player_state/player_base_state.gd" id="3_omwx7"]
 [ext_resource type="Script" path="res://scripts/state_machine/player_state/jump_state.gd" id="4_fr1s4"]
-[ext_resource type="Script" path="res://scripts/state_machine/player_state/crouch_state.gd" id="5_6gq0k"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_o628y"]
 radius = 0.445
@@ -50,6 +49,3 @@ script = ExtResource("3_omwx7")
 
 [node name="jump" type="Node" parent="StateMachine"]
 script = ExtResource("4_fr1s4")
-
-[node name="crouch" type="Node" parent="StateMachine"]
-script = ExtResource("5_6gq0k")
