@@ -25,6 +25,7 @@ func set_state(state_name : String):
 		# set the state
 		current_state = states[state_name]
 		current_state.host = host
+		current_state._enter_state()
 	else: # use a normal print because every previous iteration of this system just crashes
 		print("error: state '%s' not found" % state_name)
 	pass
