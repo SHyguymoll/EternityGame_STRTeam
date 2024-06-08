@@ -1,6 +1,30 @@
-[gd_scene load_steps=10 format=3 uid="uid://br76acg3nulm6"]
+[gd_scene load_steps=11 format=3 uid="uid://br76acg3nulm6"]
 
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_sth8l"]
+[ext_resource type="PackedScene" uid="uid://cvbltewnhlav" path="res://scenes/player.tscn" id="2_fh20e"]
+
+[sub_resource type="Sky" id="Sky_ewpfr"]
+
+[sub_resource type="Environment" id="Environment_77kwg"]
+sky = SubResource("Sky_ewpfr")
+ambient_light_source = 2
+ambient_light_color = Color(0.662745, 0.662745, 0.662745, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_olwsu"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_bvesg"]
+material = SubResource("StandardMaterial3D_olwsu")
+size = Vector2(100, 10)
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_ip4q6"]
+plane = Plane(1, 0, 0, 0)
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_45l72"]
+plane = Plane(-1, 0, 0, 0)
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_02pyt"]
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_1v2xh"]
 
 [sub_resource type="Sky" id="Sky_ewpfr"]
 
@@ -30,36 +54,33 @@ plane = Plane(0, 0, -1, 0)
 [node name="Game" type="Node3D"]
 script = ExtResource("1_sth8l")
 
-[node name="GameCamera" type="Camera3D" parent="."]
-transform = Transform3D(-4.37114e-08, -0.214735, 0.976672, 0, 0.976672, 0.214735, -1, 9.38638e-09, -4.26917e-08, 6.108, 1.775, 0)
-
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_77kwg")
+
+[node name="GameCamera" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.976672, 0.214735, 0, -0.214735, 0.976672, 4.66957, 1.775, 5.48786)
+current = true
 
 [node name="GroundPlaceholder" type="Node3D" parent="."]
 
 [node name="Mesh" type="MeshInstance3D" parent="GroundPlaceholder"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -50)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50, 0, 0)
 mesh = SubResource("PlaneMesh_bvesg")
 skeleton = NodePath("../..")
 
-[node name="Player" type="CharacterBody3D" parent="."]
-collision_layer = 0
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Player"]
-shape = SubResource("CapsuleShape3D_0brey")
+[node name="Player" parent="." instance=ExtResource("2_fh20e")]
 
 [node name="WorldCameraBounds" type="StaticBody3D" parent="."]
 
 [node name="Left" type="CollisionShape3D" parent="WorldCameraBounds"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.105)
-shape = SubResource("WorldBoundaryShape3D_45l72")
-
-[node name="Right" type="CollisionShape3D" parent="WorldCameraBounds"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.935)
 shape = SubResource("WorldBoundaryShape3D_ip4q6")
 
+[node name="Right" type="CollisionShape3D" parent="WorldCameraBounds"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 0)
+shape = SubResource("WorldBoundaryShape3D_45l72")
+
 [node name="WorldCollide" type="StaticBody3D" parent="."]
+physics_material_override = SubResource("PhysicsMaterial_02pyt")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="WorldCollide"]
-shape = SubResource("WorldBoundaryShape3D_5ow76")
+shape = SubResource("WorldBoundaryShape3D_1v2xh")
