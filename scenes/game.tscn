@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://br76acg3nulm6"]
+[gd_scene load_steps=10 format=3 uid="uid://br76acg3nulm6"]
 
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_sth8l"]
 [ext_resource type="PackedScene" uid="uid://cvbltewnhlav" path="res://scenes/player.tscn" id="2_fh20e"]
@@ -14,42 +14,14 @@ ambient_light_color = Color(0.662745, 0.662745, 0.662745, 1)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_bvesg"]
 material = SubResource("StandardMaterial3D_olwsu")
-size = Vector2(100, 10)
+size = Vector2(10, 100)
 
-[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_ip4q6"]
-plane = Plane(1, 0, 0, 0)
-
-[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_45l72"]
-plane = Plane(-1, 0, 0, 0)
+[sub_resource type="BoxShape3D" id="BoxShape3D_k4m8b"]
+size = Vector3(1, 22.1912, 21.8611)
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_02pyt"]
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_1v2xh"]
-
-[sub_resource type="Sky" id="Sky_ewpfr"]
-
-[sub_resource type="Environment" id="Environment_77kwg"]
-sky = SubResource("Sky_ewpfr")
-ambient_light_source = 2
-ambient_light_color = Color(0.662745, 0.662745, 0.662745, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_olwsu"]
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_bvesg"]
-material = SubResource("StandardMaterial3D_olwsu")
-size = Vector2(10, 100)
-
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_0brey"]
-radius = 0.445
-height = 1.5
-
-[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_45l72"]
-plane = Plane(0, 0, 1, 0)
-
-[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_ip4q6"]
-plane = Plane(0, 0, -1, 0)
-
-[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_5ow76"]
 
 [node name="Game" type="Node3D"]
 script = ExtResource("1_sth8l")
@@ -58,7 +30,7 @@ script = ExtResource("1_sth8l")
 environment = SubResource("Environment_77kwg")
 
 [node name="GameCamera" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.976672, 0.214735, 0, -0.214735, 0.976672, 4.66957, 1.775, 5.48786)
+transform = Transform3D(1, 0, 0, 0, 0.976672, 0.214735, 0, -0.214735, 0.976672, 0, 1.775, 5.488)
 current = true
 
 [node name="GroundPlaceholder" type="Node3D" parent="."]
@@ -73,11 +45,12 @@ skeleton = NodePath("../..")
 [node name="WorldCameraBounds" type="StaticBody3D" parent="."]
 
 [node name="Left" type="CollisionShape3D" parent="WorldCameraBounds"]
-shape = SubResource("WorldBoundaryShape3D_ip4q6")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 0)
+shape = SubResource("BoxShape3D_k4m8b")
 
 [node name="Right" type="CollisionShape3D" parent="WorldCameraBounds"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 0)
-shape = SubResource("WorldBoundaryShape3D_45l72")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 0)
+shape = SubResource("BoxShape3D_k4m8b")
 
 [node name="WorldCollide" type="StaticBody3D" parent="."]
 physics_material_override = SubResource("PhysicsMaterial_02pyt")
