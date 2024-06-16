@@ -6,6 +6,11 @@ var enemy_type : EnemyTypes
 var speed : float
 
 func _ready() -> void:
+	for child in get_children():
+		if child is CollisionShape3D:
+			child.disabled = true
+		else:
+			child.visible = false
 	match enemy_type:
 		EnemyTypes.JUMPING:
 			$JumpObstacle.visible = true
