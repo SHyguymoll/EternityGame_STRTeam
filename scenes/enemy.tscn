@@ -1,0 +1,50 @@
+[gd_scene load_steps=8 format=3 uid="uid://chc56bofxwyry"]
+
+[ext_resource type="Script" path="res://scripts/enemy.gd" id="1_bnu0r"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3em2y"]
+albedo_color = Color(0.992157, 0.25098, 1, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_x0rff"]
+material = SubResource("StandardMaterial3D_3em2y")
+size = Vector3(1.5, 1.5, 1.5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hwony"]
+albedo_color = Color(0.25098, 1, 0.537255, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_s2ysc"]
+material = SubResource("StandardMaterial3D_hwony")
+size = Vector3(0.5, 7, 0.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5lmok"]
+size = Vector3(2.15137, 1.23969, 1.47168)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_d6p3c"]
+size = Vector3(0.277344, 7.00316, 0.416992)
+
+[node name="Enemy" type="Area3D"]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("1_bnu0r")
+
+[node name="JumpObstacle" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
+visible = false
+mesh = SubResource("BoxMesh_x0rff")
+
+[node name="DodgeObstacle" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.5, 0)
+visible = false
+mesh = SubResource("BoxMesh_s2ysc")
+
+[node name="JumpShape" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.634178, 0)
+shape = SubResource("BoxShape3D_5lmok")
+disabled = true
+
+[node name="DodgeShape" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.51591, 0)
+shape = SubResource("BoxShape3D_d6p3c")
+disabled = true
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
