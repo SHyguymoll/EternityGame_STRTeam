@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://ywivoqaxqxea"
-path="res://.godot/imported/Telephone Pole.gltf-b77b101af8f1ddf83361b9beaa3108dd.scn"
+uid="uid://7xcc40nb53ju"
+path="res://.godot/imported/Telephone Pole.gltf-3ac006fb0515a86e89a9408ca88b503e.scn"
 
 [deps]
 
-source_file="res://assets/models/game_ready/Telephone Pole.gltf"
-dest_files=["res://.godot/imported/Telephone Pole.gltf-b77b101af8f1ddf83361b9beaa3108dd.scn"]
+source_file="res://assets/models/dev/Telephone Pole.gltf"
+dest_files=["res://.godot/imported/Telephone Pole.gltf-3ac006fb0515a86e89a9408ca88b503e.scn"]
 
 [params]
 
