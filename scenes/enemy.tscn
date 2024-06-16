@@ -16,10 +16,10 @@ collision_mask = 2
 script = ExtResource("1_bnu0r")
 
 [node name="JumpObstacle" parent="." instance=ExtResource("2_o34yd")]
-transform = Transform3D(-0.375, 0, -3.27835e-08, 0, 0.375, 0, 3.27835e-08, 0, -0.375, 0, 0, 0)
+transform = Transform3D(-0.375, 0, -3.27835e-08, 0, 0.375, 0, 3.27835e-08, 0, -0.375, 0, 0.6, 0)
 
 [node name="DodgeObstacle" parent="." instance=ExtResource("3_aq5tk")]
-transform = Transform3D(-0.55, 0, -4.80825e-08, 0, 0.55, 0, 4.80825e-08, 0, -0.55, 0, 0, 0)
+transform = Transform3D(-0.55, 0, -4.80825e-08, 0, 0.55, 0, 4.80825e-08, 0, -0.55, 0, 0.197263, 0)
 
 [node name="JumpShape" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.634178, 0)
