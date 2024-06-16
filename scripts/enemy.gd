@@ -16,7 +16,7 @@ func _ready() -> void:
 
 
 func _process(delta: float) -> void:
-	position.x += delta * speed
+	position.x -= delta * speed
 
 
 func _on_area_entered(area: Area3D) -> void:
