@@ -53,3 +53,4 @@ script = ExtResource("4_fr1s4")
 
 [node name="crouch" type="Node" parent="StateMachine"]
 script = ExtResource("5_6gq0k")
+allow_horizontal_input = false
