@@ -51,11 +51,11 @@ skeleton = NodePath("../..")
 [node name="WorldCameraBounds" type="StaticBody3D" parent="."]
 
 [node name="Left" type="CollisionShape3D" parent="WorldCameraBounds"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, 0)
 shape = SubResource("BoxShape3D_k4m8b")
 
 [node name="Right" type="CollisionShape3D" parent="WorldCameraBounds"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, 0)
 shape = SubResource("BoxShape3D_k4m8b")
 
 [node name="WorldCollide" type="StaticBody3D" parent="."]
@@ -68,7 +68,7 @@ shape = SubResource("WorldBoundaryShape3D_1v2xh")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 0)
 
 [node name="EnemyDestroyer" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 0, 0)
 collision_layer = 0
 collision_mask = 4
 script = ExtResource("3_4ej1v")
