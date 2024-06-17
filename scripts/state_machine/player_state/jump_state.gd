@@ -1,15 +1,9 @@
 extends "res://scripts/state_machine/player_state/player_base_state.gd"
 
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
 func _tick_state(delta):
 	tick_movement(delta)
-	if host.is_on_floor():
+	if not Input.is_action_pressed("player_jump") and host.velocity.y > (host.JUMP_VELOCITY/1.5):
+		host.velocity.y = host.JUMP_VELOCITY / 1.5
 		host.state_machine.set_state("idle_run")
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+	if host.is_on_floor() and host.velocity.y == 0:
+		host.state_machine.set_state("idle_run")

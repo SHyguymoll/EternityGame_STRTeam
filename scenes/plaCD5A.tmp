@@ -42,13 +42,6 @@ offset_right = 40.0
 offset_bottom = 42.0
 text = "balls"
 
-[node name="OtherLabel" type="Label" parent="DebugHud"]
-unique_name_in_owner = true
-offset_top = 35.0
-offset_right = 40.0
-offset_bottom = 58.0
-text = "balls"
-
 [node name="StateMachine" type="Node" parent="."]
 script = ExtResource("2_t3xjw")
 

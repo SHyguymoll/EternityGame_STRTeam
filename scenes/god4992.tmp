@@ -18,7 +18,7 @@ shape = SubResource("BoxShape3D_dren2")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.31486, 1.18789, 0)
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.858897, 0.512148, 0, -0.512148, 0.858897, 0, 4.55217, 7.49336)
+transform = Transform3D(1, 0, 0, 0, 0.981567, 0.191117, 0, -0.191117, 0.981567, 0, 2.72977, 7.49336)
 
 [node name="JumpObstacle" parent="." instance=ExtResource("2_kqq6k")]
 transform = Transform3D(-0.375, 0, -3.27835e-08, 0, 0.375, 0, 3.27835e-08, 0, -0.375, 0, 1.14222, 0)

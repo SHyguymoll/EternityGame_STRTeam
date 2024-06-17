@@ -29,7 +29,7 @@ func apply_movement(delta): # handle horizontal movement
 
 func jump(delta):
 	if Input.is_action_just_pressed("player_jump") and host.is_on_floor():
-		host.velocity.y = host.JUMP_VELOCITY
+		host.velocity.y += host.JUMP_VELOCITY
 		host.state_machine.set_state("jump")
 
 func crouch(delta):
