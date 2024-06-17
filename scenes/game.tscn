@@ -1,7 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://br76acg3nulm6"]
+[gd_scene load_steps=13 format=3 uid="uid://br76acg3nulm6"]
 
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_sth8l"]
+[ext_resource type="PackedScene" uid="uid://chc56bofxwyry" path="res://scenes/enemy.tscn" id="2_2k1dn"]
 [ext_resource type="PackedScene" uid="uid://cvbltewnhlav" path="res://scenes/player.tscn" id="2_fh20e"]
+[ext_resource type="Script" path="res://scripts/enemydestroyer.gd" id="3_4ej1v"]
 
 [sub_resource type="Sky" id="Sky_ewpfr"]
 
@@ -16,24 +18,25 @@ ambient_light_color = Color(0.662745, 0.662745, 0.662745, 1)
 material = SubResource("StandardMaterial3D_olwsu")
 size = Vector2(100, 10)
 
-[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_ip4q6"]
-plane = Plane(1, 0, 0, 0)
-
-[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_45l72"]
-plane = Plane(-1, 0, 0, 0)
+[sub_resource type="BoxShape3D" id="BoxShape3D_k4m8b"]
+size = Vector3(1, 22.1912, 21.8611)
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_02pyt"]
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_1v2xh"]
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_ahdf0"]
+size = Vector3(50, 22.1912, 21.8611)
+
 [node name="Game" type="Node3D"]
 script = ExtResource("1_sth8l")
+enemy_scene = ExtResource("2_2k1dn")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_77kwg")
 
 [node name="GameCamera" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.976672, 0.214735, 0, -0.214735, 0.976672, 4.66957, 1.775, 5.48786)
+transform = Transform3D(1, 0, 0, 0, 0.976672, 0.214735, 0, -0.214735, 0.976672, 0, 1.775, 5.488)
 current = true
 
 [node name="GroundPlaceholder" type="Node3D" parent="."]
@@ -48,14 +51,30 @@ skeleton = NodePath("../..")
 [node name="WorldCameraBounds" type="StaticBody3D" parent="."]
 
 [node name="Left" type="CollisionShape3D" parent="WorldCameraBounds"]
-shape = SubResource("WorldBoundaryShape3D_ip4q6")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 0)
+shape = SubResource("BoxShape3D_k4m8b")
 
 [node name="Right" type="CollisionShape3D" parent="WorldCameraBounds"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 0)
-shape = SubResource("WorldBoundaryShape3D_45l72")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 0)
+shape = SubResource("BoxShape3D_k4m8b")
 
 [node name="WorldCollide" type="StaticBody3D" parent="."]
 physics_material_override = SubResource("PhysicsMaterial_02pyt")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="WorldCollide"]
 shape = SubResource("WorldBoundaryShape3D_1v2xh")
+
+[node name="Enemies" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 0)
+
+[node name="EnemyDestroyer" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, 0)
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("3_4ej1v")
+
+[node name="Left2" type="CollisionShape3D" parent="EnemyDestroyer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.5, 0, 0)
+shape = SubResource("BoxShape3D_ahdf0")
+
+[connection signal="area_entered" from="EnemyDestroyer" to="." method="_on_enemy_destroyer_area_entered"]

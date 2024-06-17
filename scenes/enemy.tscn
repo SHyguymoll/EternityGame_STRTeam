@@ -1,0 +1,34 @@
+[gd_scene load_steps=6 format=3 uid="uid://chc56bofxwyry"]
+
+[ext_resource type="Script" path="res://scripts/enemy.gd" id="1_bnu0r"]
+[ext_resource type="PackedScene" uid="uid://cw0jbwacidkhf" path="res://assets/models/game_ready/Car.gltf" id="2_o34yd"]
+[ext_resource type="PackedScene" uid="uid://ywivoqaxqxea" path="res://assets/models/game_ready/Telephone Pole.gltf" id="3_aq5tk"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5lmok"]
+size = Vector3(2.15137, 1.23969, 1.47168)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_d6p3c"]
+size = Vector3(0.277344, 7.00316, 0.416992)
+
+[node name="Enemy" type="Area3D"]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("1_bnu0r")
+
+[node name="JumpObstacle" parent="." instance=ExtResource("2_o34yd")]
+transform = Transform3D(-0.375, 0, -3.27835e-08, 0, 0.375, 0, 3.27835e-08, 0, -0.375, 0, 0.6, 0)
+
+[node name="DodgeObstacle" parent="." instance=ExtResource("3_aq5tk")]
+transform = Transform3D(-0.55, 0, -4.80825e-08, 0, 0.55, 0, 4.80825e-08, 0, -0.55, 0, 0.197263, 0)
+
+[node name="JumpShape" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.634178, 0)
+shape = SubResource("BoxShape3D_5lmok")
+disabled = true
+
+[node name="DodgeShape" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.51591, 0)
+shape = SubResource("BoxShape3D_d6p3c")
+disabled = true
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
