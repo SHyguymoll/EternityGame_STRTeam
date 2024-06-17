@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/enemy.gd" id="1_bnu0r"]
 [ext_resource type="PackedScene" uid="uid://cw0jbwacidkhf" path="res://assets/models/game_ready/Car.gltf" id="2_o34yd"]
-[ext_resource type="PackedScene" uid="uid://7xcc40nb53ju" path="res://assets/models/game_ready/Telephone Pole.gltf" id="3_aq5tk"]
+[ext_resource type="PackedScene" uid="uid://da0ndxx72ht73" path="res://assets/models/game_ready/Telephone Pole.gltf" id="3_aq5tk"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_5lmok"]
 size = Vector3(2.15137, 1.23969, 1.47168)
