@@ -18,7 +18,7 @@ func _process(delta: float) -> void:
 	if fmod(time_in_game, ENEMY_SPAWN_TIME_GAP / max(1.0, ((time_in_game - INITIAL_PEACE + 0.001)/INITIAL_PEACE))) < ENEMY_SPAWN_MOD_GAP:
 		var new_enemy : Enemy = enemy_scene.instantiate()
 		new_enemy.enemy_type = randi_range(0, len(Enemy.EnemyTypes) - 1)
-		new_enemy.speed = 25
+		new_enemy.speed = 20
 		print(new_enemy, " ", Enemy.EnemyTypes.keys()[new_enemy.enemy_type])
 		$Enemies.add_child(new_enemy)
 		time_since_enemy = 0.5
