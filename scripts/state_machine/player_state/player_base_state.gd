@@ -39,6 +39,9 @@ func crouch(delta):
 		# else: fastfall?
 
 func dodge(delta):
+	if Input.is_action_just_pressed("player_action"):
+		if host.is_on_floor():
+			host.state_machine.set_state("dodge")
 	pass
 
 func _exit_state():

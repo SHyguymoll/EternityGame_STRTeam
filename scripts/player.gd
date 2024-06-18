@@ -1,17 +1,18 @@
 class_name Player
 extends CharacterBody3D
 
+const JUMP_VELOCITY : int = 10
+const ACCELERATION : int = 15
+const MAX_SPEED : int = 10
+const DODGE_DISTANCE : float = 0.5
+const DODGE_TIME : float = 0.5
 
-const JUMP_VELOCITY = 10
-const ACCELERATION = 15
-const MAX_SPEED = 10
+@onready var state_machine = $StateMachine
+@onready var animation_player = $AnimationPlayer
+@onready var default_z_position : float = position.z
 
 var motion : Vector2 = Vector2.ZERO
-
-# Get the gravity from the project settings to be synced with RigidBody nodes.
-var gravity = ProjectSettings.get_setting("physics/3d/default_gravity") * 2.5 # i could change this in the project settings but i'm anticipating a merge conflict LMAO
-@onready var default_z_position : float = position.z
-@onready var state_machine = $StateMachine
+var gravity = ProjectSettings.get_setting("physics/3d/default_gravity") * 3 # i could change this in the project settings but i'm anticipating a merge conflict LMAO
 
 func _ready():
 	state_machine.set_state("idle_run")

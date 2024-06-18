@@ -47,6 +47,7 @@ mesh = SubResource("PlaneMesh_bvesg")
 skeleton = NodePath("../..")
 
 [node name="Player" parent="." instance=ExtResource("2_fh20e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.77347, 0)
 
 [node name="WorldCameraBounds" type="StaticBody3D" parent="."]
 
