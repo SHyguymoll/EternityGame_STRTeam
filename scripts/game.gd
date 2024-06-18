@@ -5,8 +5,8 @@ var time_in_game : float = 0.0
 var time_since_enemy : float = 0.5
 
 const ENEMY_SPAWN_MOD_GAP : float = 0.05
-const ENEMY_SPAWN_TIME_GAP : float = 4.0
-const INITIAL_PEACE : float = 30.0
+const ENEMY_SPAWN_TIME_GAP : float = 3.0
+const INITIAL_PEACE : float = 10.0
 @export var enemy_scene : PackedScene
 
 func _process(delta: float) -> void:

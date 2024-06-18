@@ -5,10 +5,10 @@
 [ext_resource type="PackedScene" uid="uid://da0ndxx72ht73" path="res://assets/models/game_ready/Telephone Pole.gltf" id="3_aq5tk"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_5lmok"]
-size = Vector3(2.15137, 1.23969, 1.47168)
+size = Vector3(0.340822, 1.23969, 1.47168)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_d6p3c"]
-size = Vector3(0.277344, 7.00316, 0.416992)
+size = Vector3(0.134277, 7.00316, 0.161865)
 
 [node name="Enemy" type="Area3D"]
 collision_layer = 4
@@ -22,12 +22,12 @@ transform = Transform3D(-0.375, 0, -3.27835e-08, 0, 0.375, 0, 3.27835e-08, 0, -0
 transform = Transform3D(-0.55, 0, -4.80825e-08, 0, 0.55, 0, 4.80825e-08, 0, -0.55, 0, 0.197263, 0)
 
 [node name="JumpShape" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.634178, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.905274, 0.634178, 0)
 shape = SubResource("BoxShape3D_5lmok")
 disabled = true
 
 [node name="DodgeShape" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.51591, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.130405, 3.51591, 0)
 shape = SubResource("BoxShape3D_d6p3c")
 disabled = true
 
