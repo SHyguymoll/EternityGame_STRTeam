@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://cvbltewnhlav"]
+[gd_scene load_steps=13 format=3 uid="uid://cvbltewnhlav"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_tawbh"]
 [ext_resource type="Script" path="res://scripts/state_machine/state_machine.gd" id="2_t3xjw"]
 [ext_resource type="Script" path="res://scripts/state_machine/player_state/player_base_state.gd" id="3_omwx7"]
 [ext_resource type="Script" path="res://scripts/state_machine/player_state/jump_state.gd" id="4_fr1s4"]
 [ext_resource type="Script" path="res://scripts/state_machine/player_state/crouch_state.gd" id="5_6gq0k"]
+[ext_resource type="Script" path="res://scripts/state_machine/player_state/dodge_state.gd" id="6_3j5n7"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_o628y"]
 radius = 0.445
@@ -12,8 +13,95 @@ height = 1.5
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_s1oxj"]
 
+[sub_resource type="Animation" id="Animation_nuoti"]
+resource_name = "RESET"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("%OtherLabel/../../CollisionShape3D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("%OtherLabel/../../MeshInstance3D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_l66lx"]
+resource_name = "crouch"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("%OtherLabel/../../CollisionShape3D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 1.5708)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("%OtherLabel/../../MeshInstance3D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 1.5708)]
+}
+
+[sub_resource type="Animation" id="Animation_vqjvd"]
+resource_name = "idle"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("%OtherLabel/../../CollisionShape3D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("%OtherLabel/../../MeshInstance3D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_nb8w4"]
+_data = {
+"RESET": SubResource("Animation_nuoti"),
+"crouch": SubResource("Animation_l66lx"),
+"idle": SubResource("Animation_vqjvd")
+}
+
 [node name="Player" type="CharacterBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.18789, 0)
 collision_layer = 2
 axis_lock_angular_x = true
 axis_lock_angular_y = true
@@ -61,3 +149,14 @@ script = ExtResource("4_fr1s4")
 [node name="crouch" type="Node" parent="StateMachine"]
 script = ExtResource("5_6gq0k")
 allow_horizontal_input = false
+
+[node name="dodge" type="Node" parent="StateMachine"]
+script = ExtResource("6_3j5n7")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+root_node = NodePath("../DebugHud/OtherLabel")
+libraries = {
+"": SubResource("AnimationLibrary_nb8w4")
+}
+autoplay = "idle"

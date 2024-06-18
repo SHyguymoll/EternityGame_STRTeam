@@ -7,3 +7,6 @@ func _tick_state(delta):
 		host.state_machine.set_state("idle_run")
 	if host.is_on_floor() and host.velocity.y == 0:
 		host.state_machine.set_state("idle_run")
+
+func get_gravity():
+	return host.gravity
