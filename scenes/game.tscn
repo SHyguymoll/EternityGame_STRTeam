@@ -38,6 +38,7 @@ environment = SubResource("Environment_77kwg")
 [node name="GameCamera" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.976672, 0.214735, 0, -0.214735, 0.976672, 0, 1.775, 5.488)
 current = true
+fov = 85.0
 
 [node name="GroundPlaceholder" type="Node3D" parent="."]
 

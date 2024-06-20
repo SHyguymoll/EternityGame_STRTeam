@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://chc56bofxwyry"]
+[gd_scene load_steps=7 format=3 uid="uid://chc56bofxwyry"]
 
 [ext_resource type="Script" path="res://scripts/enemy.gd" id="1_bnu0r"]
 [ext_resource type="PackedScene" uid="uid://cw0jbwacidkhf" path="res://assets/models/game_ready/Car.gltf" id="2_o34yd"]
@@ -9,6 +9,9 @@ size = Vector3(0.340822, 1.23969, 1.47168)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_d6p3c"]
 size = Vector3(0.134277, 7.00316, 0.161865)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jwu8h"]
+size = Vector3(0.134, 7.003, 1)
 
 [node name="Enemy" type="Area3D"]
 collision_layer = 4
@@ -31,4 +34,21 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.130405, 3.51591, 0)
 shape = SubResource("BoxShape3D_d6p3c")
 disabled = true
 
+[node name="PointsArea" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.130405, 3.51591, 0)
+collision_layer = 4
+collision_mask = 2
+
+[node name="JumpPointsShape" type="CollisionShape3D" parent="PointsArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.774869, -0.922355, 0)
+shape = SubResource("BoxShape3D_5lmok")
+disabled = true
+
+[node name="DodgePointsShape" type="CollisionShape3D" parent="PointsArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.03754)
+shape = SubResource("BoxShape3D_jwu8h")
+disabled = true
+
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_entered" from="PointsArea" to="." method="_grant_points"]

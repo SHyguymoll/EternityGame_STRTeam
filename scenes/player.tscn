@@ -132,6 +132,7 @@ text = "balls"
 
 [node name="OtherLabel" type="Label" parent="DebugHud"]
 unique_name_in_owner = true
+visible = false
 offset_top = 35.0
 offset_right = 40.0
 offset_bottom = 58.0
