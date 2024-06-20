@@ -32,6 +32,7 @@ func _on_area_entered(area: Area3D) -> void:
 func _on_body_entered(body):
 	if body is Player: # hurt the player if they hit an obstacle
 		body.hurt()
+		$PointsArea.queue_free() # delete the points area if the player got hit bc they don't deserve it!!!
 	pass # Replace with function body.
 
 
