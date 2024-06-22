@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://br76acg3nulm6"]
+[gd_scene load_steps=17 format=3 uid="uid://br76acg3nulm6"]
 
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_sth8l"]
 [ext_resource type="PackedScene" uid="uid://chc56bofxwyry" path="res://scenes/enemy.tscn" id="2_2k1dn"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://scripts/enemydestroyer.gd" id="3_4ej1v"]
 [ext_resource type="PackedScene" uid="uid://drxj5r11bcqoh" path="res://scenes/ragdollhand.tscn" id="3_myhui"]
 [ext_resource type="Texture2D" uid="uid://diis7i7h681hd" path="res://assets/models/game_ready/textures/road.png" id="3_phtc3"]
+[ext_resource type="Script" path="res://scripts/game_camera.gd" id="4_yvyae"]
 [ext_resource type="PackedScene" uid="uid://cycjr6yu0xbm" path="res://assets/models/dev/CarWindow.gltf" id="5_d37mi"]
 [ext_resource type="AudioStream" uid="uid://opmgnv7r47mf" path="res://assets/audio/sound_effects/game_over.wav" id="8_xie1j"]
 
@@ -45,6 +46,7 @@ environment = SubResource("Environment_77kwg")
 transform = Transform3D(1, 0, 0, 0, 0.976672, 0.214735, 0, -0.214735, 0.976672, 0, 1.775, 5.488)
 current = true
 fov = 85.0
+script = ExtResource("4_yvyae")
 
 [node name="GroundPlaceholder" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.06, -0.665)
@@ -149,6 +151,7 @@ stream = ExtResource("8_xie1j")
 volume_db = -16.083
 
 [connection signal="game_over" from="Player" to="." method="_on_player_game_over"]
+[connection signal="player_hurt" from="Player" to="GameCamera" method="_on_player_player_hurt"]
 [connection signal="area_entered" from="EnemyDestroyer" to="." method="_on_enemy_destroyer_area_entered"]
 [connection signal="pressed" from="ColorRect/Button" to="." method="_on_button_pressed"]
 [connection signal="timeout" from="BackgroundElementTimer" to="." method="_on_background_element_timer_timeout"]

@@ -70,3 +70,5 @@ func _on_button_pressed() -> void:
 
 func _on_background_element_timer_timeout() -> void:
 	spawn_background_element()
+
+

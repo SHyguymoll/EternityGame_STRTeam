@@ -2,6 +2,7 @@ class_name Player
 extends CharacterBody3D
 
 signal game_over
+signal player_hurt
 
 const DEFAULT_HEALTH : int = 2
 const MAX_HEALTH : int = DEFAULT_HEALTH
@@ -31,7 +32,7 @@ func _ready():
 func hurt():
 	run_speed = 0.0
 	anim_state.travel("B_Hurt")
-
+	player_hurt.emit()
 	if current_health - 1 < 0:
 		die()
 	else:
