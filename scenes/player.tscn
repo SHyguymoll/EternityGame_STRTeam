@@ -1,4 +1,4 @@
-[gd_scene load_steps=55 format=3 uid="uid://cvbltewnhlav"]
+[gd_scene load_steps=54 format=3 uid="uid://cvbltewnhlav"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_tawbh"]
 [ext_resource type="Script" path="res://scripts/state_machine/state_machine.gd" id="2_t3xjw"]
@@ -13,7 +13,6 @@
 [ext_resource type="Material" uid="uid://ccue4xk581ujj" path="res://assets/materials/player_outline.tres" id="9_oisxi"]
 [ext_resource type="AudioStream" uid="uid://b3lrv20ivdj4s" path="res://assets/audio/sound_effects/hurt.wav" id="10_yr7fr"]
 [ext_resource type="AudioStream" uid="uid://db2mr0bio8gvn" path="res://assets/audio/sound_effects/heal.wav" id="11_mp78p"]
-[ext_resource type="AudioStream" uid="uid://opmgnv7r47mf" path="res://assets/audio/sound_effects/game_over.wav" id="12_sqoa2"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_o628y"]
 radius = 0.445
@@ -9771,10 +9770,6 @@ volume_db = -12.18
 [node name="HealSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("11_mp78p")
 volume_db = -12.18
-
-[node name="DeathSound" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("12_sqoa2")
-volume_db = -16.083
 
 [connection signal="animation_finished" from="AnimationTree" to="." method="_on_animation_tree_animation_finished"]
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://br76acg3nulm6"]
+[gd_scene load_steps=17 format=3 uid="uid://br76acg3nulm6"]
 
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_sth8l"]
 [ext_resource type="PackedScene" uid="uid://chc56bofxwyry" path="res://scenes/enemy.tscn" id="2_2k1dn"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://drxj5r11bcqoh" path="res://scenes/ragdollhand.tscn" id="3_myhui"]
 [ext_resource type="Texture2D" uid="uid://diis7i7h681hd" path="res://assets/models/game_ready/textures/road.png" id="3_phtc3"]
 [ext_resource type="PackedScene" uid="uid://cycjr6yu0xbm" path="res://assets/models/dev/CarWindow.gltf" id="5_d37mi"]
+[ext_resource type="AudioStream" uid="uid://opmgnv7r47mf" path="res://assets/audio/sound_effects/game_over.wav" id="8_xie1j"]
 
 [sub_resource type="Sky" id="Sky_ewpfr"]
 
@@ -142,6 +143,10 @@ text = "Back to Menu"
 [node name="BackgroundElementTimer" type="Timer" parent="."]
 wait_time = 0.5
 autostart = true
+
+[node name="DeathSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_xie1j")
+volume_db = -16.083
 
 [connection signal="game_over" from="Player" to="." method="_on_player_game_over"]
 [connection signal="area_entered" from="EnemyDestroyer" to="." method="_on_enemy_destroyer_area_entered"]

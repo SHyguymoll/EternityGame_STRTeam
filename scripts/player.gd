@@ -33,7 +33,6 @@ func hurt():
 	anim_state.travel("B_Hurt")
 
 	if current_health - 1 < 0:
-		$DeathSound.play()
 		die()
 	else:
 		$HurtSound.play()
@@ -57,6 +56,8 @@ func _physics_process(delta):
 	%StateLabel.set_text("Score: " + str(points))
 	move_and_slide()
 
+func _process(delta: float) -> void:
+	$Hand.position = Vector3(randf() * (2 - current_health)/10, randf() * (2 - current_health)/10, randf() * (2 - current_health)/10)
 
 func _on_animation_tree_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "B_Hurt":

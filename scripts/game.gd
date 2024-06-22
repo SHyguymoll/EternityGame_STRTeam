@@ -53,6 +53,7 @@ func _enemy_hit_player(player_area: Area3D):
 
 
 func _on_player_game_over() -> void:
+	$DeathSound.play()
 	var ragdo = ragdoll.instantiate()
 	ragdo.global_position = $Player.global_position
 	add_child(ragdo)
