@@ -15,6 +15,10 @@ run/main_scene="res://scenes/menu.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://assets/sprites/icon.png"
 
+[display]
+
+window/stretch/mode="viewport"
+
 [input]
 
 player_left={
