@@ -25,12 +25,18 @@ func _process(delta: float) -> void:
 		var new_enemy : Enemy = enemy_scene.instantiate()
 		new_enemy.enemy_type = randi_range(0, len(Enemy.EnemyTypes) - 1)
 		new_enemy.speed = 20
-		print(new_enemy, " ", Enemy.EnemyTypes.keys()[new_enemy.enemy_type])
+		#print(new_enemy, " ", Enemy.EnemyTypes.keys()[new_enemy.enemy_type])
 		$Enemies.add_child(new_enemy)
 		time_since_enemy = 0.5
 
 
-@onready var background_elements = [preload("res://assets/models/game_ready/House.gltf")]
+@onready var background_elements = [
+	preload("res://assets/models/game_ready/House.gltf"),
+	preload("res://assets/models/game_ready/HouseTall.gltf"),
+	preload("res://assets/models/game_ready/Tree1.gltf"),
+	preload("res://assets/models/game_ready/Tree2.gltf"),
+	preload("res://assets/models/game_ready/Tree3.gltf"),
+]
 @onready var background_script = preload("res://scripts/background.gd")
 
 func spawn_background_element():
@@ -51,7 +57,7 @@ func _on_player_game_over() -> void:
 	ragdo.global_position = $Player.global_position
 	add_child(ragdo)
 	$Player.queue_free()
-	$ColorRect/ScoreLabel.text = "Time Lasted: " + str(time_in_game) + " Seconds"
+	$ColorRect/ScoreLabel.text = "Time Lasted: \n" + ("%.2f" % time_in_game) + " Seconds"
 	$ColorRect.visible = true
 
 
