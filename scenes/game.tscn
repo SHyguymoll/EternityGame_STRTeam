@@ -1,9 +1,10 @@
-[gd_scene load_steps=14 format=3 uid="uid://br76acg3nulm6"]
+[gd_scene load_steps=15 format=3 uid="uid://br76acg3nulm6"]
 
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_sth8l"]
 [ext_resource type="PackedScene" uid="uid://chc56bofxwyry" path="res://scenes/enemy.tscn" id="2_2k1dn"]
 [ext_resource type="PackedScene" uid="uid://cvbltewnhlav" path="res://scenes/player.tscn" id="2_fh20e"]
 [ext_resource type="Script" path="res://scripts/enemydestroyer.gd" id="3_4ej1v"]
+[ext_resource type="Texture2D" uid="uid://diis7i7h681hd" path="res://assets/models/game_ready/textures/road.png" id="3_phtc3"]
 [ext_resource type="PackedScene" uid="uid://cycjr6yu0xbm" path="res://assets/models/dev/CarWindow.gltf" id="5_d37mi"]
 
 [sub_resource type="Sky" id="Sky_ewpfr"]
@@ -14,6 +15,8 @@ ambient_light_source = 2
 ambient_light_color = Color(0.662745, 0.662745, 0.662745, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_olwsu"]
+albedo_texture = ExtResource("3_phtc3")
+albedo_texture_force_srgb = true
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_bvesg"]
 material = SubResource("StandardMaterial3D_olwsu")
