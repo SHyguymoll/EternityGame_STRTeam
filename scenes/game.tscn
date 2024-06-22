@@ -1,9 +1,10 @@
-[gd_scene load_steps=13 format=3 uid="uid://br76acg3nulm6"]
+[gd_scene load_steps=14 format=3 uid="uid://br76acg3nulm6"]
 
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_sth8l"]
 [ext_resource type="PackedScene" uid="uid://chc56bofxwyry" path="res://scenes/enemy.tscn" id="2_2k1dn"]
 [ext_resource type="PackedScene" uid="uid://cvbltewnhlav" path="res://scenes/player.tscn" id="2_fh20e"]
 [ext_resource type="Script" path="res://scripts/enemydestroyer.gd" id="3_4ej1v"]
+[ext_resource type="PackedScene" uid="uid://cycjr6yu0xbm" path="res://assets/models/dev/CarWindow.gltf" id="5_d37mi"]
 
 [sub_resource type="Sky" id="Sky_ewpfr"]
 
@@ -41,9 +42,10 @@ current = true
 fov = 85.0
 
 [node name="GroundPlaceholder" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.06, -0.665)
 
 [node name="Mesh" type="MeshInstance3D" parent="GroundPlaceholder"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50, 0, -0.237944)
 mesh = SubResource("PlaneMesh_bvesg")
 skeleton = NodePath("../..")
 
@@ -78,5 +80,8 @@ script = ExtResource("3_4ej1v")
 [node name="Left2" type="CollisionShape3D" parent="EnemyDestroyer"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.5, 0, 0)
 shape = SubResource("BoxShape3D_ahdf0")
+
+[node name="CarWindow" parent="." instance=ExtResource("5_d37mi")]
+transform = Transform3D(0.26, 0, 0, 0, 0.26, 0, 0, 0, 0.26, 0, -0.33, 4.325)
 
 [connection signal="area_entered" from="EnemyDestroyer" to="." method="_on_enemy_destroyer_area_entered"]
