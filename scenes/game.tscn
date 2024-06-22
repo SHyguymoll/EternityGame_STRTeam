@@ -48,7 +48,7 @@ fov = 85.0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.06, -0.665)
 
 [node name="Mesh" type="MeshInstance3D" parent="GroundPlaceholder"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50, 0, -0.237944)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.2, 0, -0.238)
 mesh = SubResource("PlaneMesh_bvesg")
 skeleton = NodePath("../..")
 
