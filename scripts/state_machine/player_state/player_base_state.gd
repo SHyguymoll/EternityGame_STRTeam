@@ -27,7 +27,7 @@ func apply_movement(delta): # handle horizontal movement
 		host.velocity.x = clamp(host.velocity.x, -get_max_speed(), get_max_speed())
 	else:
 		host.velocity.x = move_toward(host.velocity.x, 0, get_acceleration() * delta)
-	host.run_speed = lerpf(host.run_speed, 1.0, 0.1)
+	host.run_speed = lerpf(host.run_speed, 1.0, 0.01)
 	host.animation_tree.set("parameters/RunWalkBlend/blend_position", host.run_speed)
 
 func jump(delta):
