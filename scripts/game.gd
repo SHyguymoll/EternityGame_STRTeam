@@ -21,6 +21,8 @@ func _process(delta: float) -> void:
 	time_since_enemy = max(time_since_enemy - delta, 0.0)
 	if time_since_enemy != 0.0: # no initial enemy jumpscares
 		return
+	if get_node_or_null("Player") == null: # stop spawning enemies after death
+		return
 	if fmod(time_in_game, ENEMY_SPAWN_TIME_GAP / max(1.0, ((time_in_game - INITIAL_PEACE + 0.001)/INITIAL_PEACE))) < ENEMY_SPAWN_MOD_GAP:
 		var new_enemy : Enemy = enemy_scene.instantiate()
 		new_enemy.enemy_type = randi_range(0, len(Enemy.EnemyTypes) - 1)
