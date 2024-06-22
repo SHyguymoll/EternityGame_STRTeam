@@ -8,7 +8,9 @@
 [ext_resource type="Script" path="res://scripts/state_machine/player_state/dodge_state.gd" id="6_3j5n7"]
 [ext_resource type="PackedScene" uid="uid://lws75mnu4hxl" path="res://assets/models/game_ready/Hand.gltf" id="7_ev07f"]
 [ext_resource type="AudioStream" uid="uid://fps1b7e0gwku" path="res://assets/audio/sound_effects/jump.wav" id="8_752jb"]
+[ext_resource type="Material" uid="uid://dk0gm4m4edr0h" path="res://assets/materials/player.tres" id="8_vicoi"]
 [ext_resource type="AudioStream" uid="uid://cooew1j3fcr8y" path="res://assets/audio/sound_effects/dodge.wav" id="9_mlql0"]
+[ext_resource type="Material" uid="uid://ccue4xk581ujj" path="res://assets/materials/player_outline.tres" id="9_oisxi"]
 [ext_resource type="AudioStream" uid="uid://b3lrv20ivdj4s" path="res://assets/audio/sound_effects/hurt.wav" id="10_yr7fr"]
 [ext_resource type="AudioStream" uid="uid://db2mr0bio8gvn" path="res://assets/audio/sound_effects/heal.wav" id="11_mp78p"]
 [ext_resource type="AudioStream" uid="uid://opmgnv7r47mf" path="res://assets/audio/sound_effects/game_over.wav" id="12_sqoa2"]
@@ -16,15 +18,6 @@
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_o628y"]
 radius = 0.445
 height = 1.5
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8qcck"]
-diffuse_mode = 3
-specular_mode = 1
-albedo_color = Color(1, 0.85098, 0.54902, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4quj8"]
-shading_mode = 0
-albedo_color = Color(0, 0, 0, 1)
 
 [sub_resource type="Animation" id="Animation_ceck0"]
 resource_name = "B_Dodge"
@@ -9669,12 +9662,14 @@ shape = SubResource("CapsuleShape3D_o628y")
 
 [node name="StateLabel" type="Label" parent="DebugHud"]
 unique_name_in_owner = true
+visible = false
 offset_right = 40.0
 offset_bottom = 23.0
 text = "balls"
 
 [node name="CoordsLabel" type="Label" parent="DebugHud"]
 unique_name_in_owner = true
+visible = false
 offset_top = 19.0
 offset_right = 40.0
 offset_bottom = 42.0
@@ -9749,8 +9744,8 @@ bones/35/scale = Vector3(1, 1, 1)
 bones/37/rotation = Quaternion(0.000526097, -6.63724e-05, 0.124593, 0.992208)
 
 [node name="Cube" parent="Hand/rig_deform/Skeleton3D" index="0"]
-surface_material_override/0 = SubResource("StandardMaterial3D_8qcck")
-surface_material_override/1 = SubResource("StandardMaterial3D_4quj8")
+surface_material_override/0 = ExtResource("8_vicoi")
+surface_material_override/1 = ExtResource("9_oisxi")
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
 root_node = NodePath("../Hand")
