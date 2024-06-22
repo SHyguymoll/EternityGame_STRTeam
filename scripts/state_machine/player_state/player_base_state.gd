@@ -5,6 +5,7 @@ extends State
 # base state script: other states should inherit from this one
 
 func _enter_state():
+	host.anim_state.travel("RunWalkBlend")
 	pass
 
 func _tick_state(delta):
@@ -14,7 +15,7 @@ func tick_movement(delta): # wrapper for functions that can be overwritten in ot
 	apply_gravity(delta)
 	apply_movement(delta)
 	jump(delta)
-	crouch(delta)
+	#crouch(delta)
 	dodge(delta)
 
 func apply_movement(delta): # handle horizontal movement
@@ -26,6 +27,8 @@ func apply_movement(delta): # handle horizontal movement
 		host.velocity.x = clamp(host.velocity.x, -get_max_speed(), get_max_speed())
 	else:
 		host.velocity.x = move_toward(host.velocity.x, 0, get_acceleration() * delta)
+	host.run_speed = lerpf(host.run_speed, 1.0, 0.1)
+	host.animation_tree.set("parameters/RunWalkBlend/blend_position", host.run_speed)
 
 func jump(delta):
 	if Input.is_action_just_pressed("player_jump") and host.is_on_floor():

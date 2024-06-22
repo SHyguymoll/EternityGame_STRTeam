@@ -4,6 +4,7 @@ var buffer_timer : float = 0.0
 var buffered : bool = false
 
 func _enter_state():
+	host.anim_state.travel("B_JumpAir")
 	reset_buffers()
 
 func _tick_state(delta):

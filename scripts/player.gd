@@ -12,8 +12,10 @@ const DODGE_TIME : float = 0.5
 const BUFFER_FRAME : float = 0.15
 
 @onready var state_machine = $StateMachine
-@onready var animation_player = $AnimationPlayer
+@onready var animation_tree = $AnimationTree
+@onready var anim_state : AnimationNodeStateMachinePlayback = animation_tree.get("parameters/playback")
 @onready var default_z_position : float = position.z
+var run_speed : float = 0.0
 
 var current_health : int = DEFAULT_HEALTH
 var points : int = 0
@@ -25,7 +27,8 @@ func _ready():
 	state_machine.set_state("idle_run")
 
 func hurt():
-	if(current_health - 1 < 0):
+	run_speed = 0.0
+	if current_health - 1 < 0:
 		die()
 	else:
 		current_health -= 1

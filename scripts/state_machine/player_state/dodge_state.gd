@@ -7,6 +7,7 @@ func _enter_state():
 	# move the player toward the camera
 	var tween = get_tree().create_tween()
 	tween.tween_property(host, "position:z", host.DODGE_DISTANCE, 0.1)
+	host.anim_state.travel("B_Dodge")
 	pass
 
 func _tick_state(delta):
