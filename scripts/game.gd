@@ -10,6 +10,11 @@ const INITIAL_PEACE : float = 10.0
 const GROUND_END : float = 50
 @export var enemy_scene : PackedScene
 
+@export var ragdoll : PackedScene
+
+func _ready() -> void:
+	$ColorRect.visible = false
+
 func _process(delta: float) -> void:
 	_ground.position.x = fmod(_ground.position.x - (delta * 50), GROUND_END)
 	time_in_game += delta
@@ -30,3 +35,16 @@ func _on_enemy_destroyer_area_entered(area: Area3D) -> void:
 
 func _enemy_hit_player(player_area: Area3D):
 	pass
+
+
+func _on_player_game_over() -> void:
+	var ragdo = ragdoll.instantiate()
+	ragdo.global_position = $Player.global_position
+	add_child(ragdo)
+	$Player.queue_free()
+	$ColorRect/ScoreLabel.text = "Time Lasted: " + str(time_in_game) + " Seconds"
+	$ColorRect.visible = true
+
+
+func _on_button_pressed() -> void:
+	get_tree().change_scene_to_file("res://scenes/menu.tscn")

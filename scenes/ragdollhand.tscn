@@ -1,0 +1,98 @@
+[gd_scene load_steps=5 format=3 uid="uid://drxj5r11bcqoh"]
+
+[ext_resource type="PackedScene" uid="uid://lws75mnu4hxl" path="res://assets/models/game_ready/Hand.gltf" id="1_kgcei"]
+[ext_resource type="Script" path="res://scripts/ragdollhand.gd" id="1_xa4va"]
+[ext_resource type="Material" uid="uid://dk0gm4m4edr0h" path="res://assets/materials/player.tres" id="3_xhhmi"]
+[ext_resource type="Material" uid="uid://ccue4xk581ujj" path="res://assets/materials/player_outline.tres" id="4_q0qeo"]
+
+[node name="RagdollHand" type="RigidBody3D"]
+linear_velocity = Vector3(-7.605, 0, 0)
+script = ExtResource("1_xa4va")
+
+[node name="Hand" parent="." instance=ExtResource("1_kgcei")]
+
+[node name="Skeleton3D" parent="Hand/rig_deform" index="0"]
+bones/0/position = Vector3(0.146857, 0.490117, -0.564024)
+bones/0/rotation = Quaternion(-0.394518, 0.382272, -0.612588, 0.568295)
+bones/1/position = Vector3(5.81618e-08, 0.143369, -2.25584e-07)
+bones/1/rotation = Quaternion(-0.0852161, 0.00111076, 0.0171913, 0.996214)
+bones/2/position = Vector3(1.52646e-08, 0.128692, -2.22534e-07)
+bones/2/rotation = Quaternion(-0.175939, 0.0130964, 0.0152972, 0.984195)
+bones/3/position = Vector3(2.27098e-09, 0.162836, 9.09184e-08)
+bones/3/rotation = Quaternion(-0.0768038, 0.00504045, -0.0046634, 0.997023)
+bones/4/position = Vector3(3.78508e-08, 0.181382, 9.67627e-08)
+bones/4/rotation = Quaternion(0.277913, -0.000777808, 0.00517829, 0.960592)
+bones/5/position = Vector3(2.68888e-08, 0.0623167, -4.96271e-08)
+bones/6/position = Vector3(3.53903e-08, 0.0590558, 1.15387e-07)
+bones/6/rotation = Quaternion(-0.0153554, -0.00119328, 0.00509878, 0.999868)
+bones/7/position = Vector3(0.0768951, 0.744613, -0.540187)
+bones/7/rotation = Quaternion(-0.858706, -0.332347, -0.236502, 0.31022)
+bones/8/position = Vector3(0.0768952, 0.744613, -0.540187)
+bones/8/rotation = Quaternion(0.356833, 0.827511, -0.361649, 0.238969)
+bones/9/position = Vector3(0.269537, 0.636132, -0.581302)
+bones/9/rotation = Quaternion(0.4315, -0.513603, -0.57427, 0.46929)
+bones/10/position = Vector3(-1.60687e-08, 0.295487, -1.4156e-07)
+bones/10/rotation = Quaternion(-3.61423e-07, -0.00216727, -5.44917e-09, 0.999998)
+bones/11/position = Vector3(3.58969e-08, 0.295488, 4.68899e-08)
+bones/11/rotation = Quaternion(0.148945, -0.00216683, 0.000326464, 0.988843)
+bones/12/position = Vector3(2.33407e-10, 0.284779, 1.58344e-08)
+bones/12/rotation = Quaternion(1.14481e-07, -0.00756888, -3.50448e-08, 0.999971)
+bones/13/position = Vector3(9.46137e-09, 0.284779, -8.11327e-08)
+bones/13/rotation = Quaternion(-0.681713, 0.0575629, 0.0447497, 0.727978)
+bones/14/position = Vector3(5.7188e-08, 0.0981942, -6.75564e-09)
+bones/14/rotation = Quaternion(1.71284e-06, 0.996499, -0.0836052, 1.32093e-06)
+bones/15/position = Vector3(0.299343, 0.844371, -0.59572)
+bones/15/rotation = Quaternion(0.409229, -0.633491, -0.452071, 0.47629)
+bones/16/position = Vector3(-1.06155e-07, 0.253209, -1.59272e-07)
+bones/16/rotation = Quaternion(-9.84933e-08, -0.00350385, 9.19675e-08, 0.999994)
+bones/17/position = Vector3(7.59018e-08, 0.253209, -2.56696e-08)
+bones/17/rotation = Quaternion(0.0154544, -0.00350371, 5.41711e-05, 0.999874)
+bones/18/position = Vector3(-1.28e-07, 0.244953, 2.56803e-08)
+bones/18/rotation = Quaternion(-3.2357e-07, 0.0427001, 1.6769e-07, 0.999088)
+bones/19/position = Vector3(-2.01773e-07, 0.244953, 1.74711e-07)
+bones/19/rotation = Quaternion(-0.631492, 0.0742456, -0.0989918, 0.765445)
+bones/20/position = Vector3(1.67024e-07, 0.115572, -4.42918e-07)
+bones/20/rotation = Quaternion(-0.0261767, 0.983569, -0.178566, -0.00467007)
+bones/21/position = Vector3(0.250161, 0.463218, -1.12657)
+bones/21/rotation = Quaternion(-0.955982, 0.286238, -0.00870034, -0.0639622)
+bones/22/position = Vector3(0.365393, 0.412215, -0.61)
+bones/22/rotation = Quaternion(0.430153, -0.534654, -0.646611, 0.333179)
+bones/23/position = Vector3(-4.30333e-08, 0.151886, 6.72875e-08)
+bones/23/rotation = Quaternion(2.34799e-06, 0.00165917, -6.60056e-08, 0.999999)
+bones/24/position = Vector3(-2.23692e-08, 0.151886, -6.71018e-07)
+bones/24/rotation = Quaternion(3.70145e-05, 0.00165736, 5.15611e-08, 0.999999)
+bones/25/position = Vector3(5.55972e-09, 0.179658, 1.12874e-08)
+bones/25/rotation = Quaternion(-6.52006e-08, -0.0169764, -2.59121e-08, 0.999856)
+bones/26/position = Vector3(9.83942e-09, 0.179658, 2.88697e-08)
+bones/26/rotation = Quaternion(0.00494108, -0.0164277, -0.00859306, 0.999816)
+bones/27/position = Vector3(0.35298, 0.203898, -0.633071)
+bones/27/rotation = Quaternion(0.548098, -0.343489, -0.601064, 0.46939)
+bones/28/position = Vector3(2.0508e-08, 0.139041, 1.47212e-07)
+bones/28/rotation = Quaternion(1.81143e-07, 0.0080942, -1.84479e-08, 0.999967)
+bones/29/position = Vector3(3.89589e-08, 0.139041, 9.30157e-08)
+bones/29/rotation = Quaternion(0.278357, 0.0080946, -0.00234577, 0.960441)
+bones/30/position = Vector3(-1.61671e-08, 0.0971157, 3.32378e-08)
+bones/30/rotation = Quaternion(1.18466e-07, -0.0396912, -3.18633e-08, 0.999212)
+bones/31/position = Vector3(-3.33782e-09, 0.0971159, -5.77992e-09)
+bones/31/rotation = Quaternion(-0.168874, -0.0390206, -0.093951, 0.980373)
+bones/32/position = Vector3(0.25245, 0.497614, -1.12638)
+bones/32/rotation = Quaternion(-0.222071, 0.972516, 0.0684591, 0.0144905)
+bones/33/position = Vector3(-0.149393, 0.872708, -0.760976)
+bones/33/rotation = Quaternion(-0.0372937, 0.215101, 0.238861, 0.946196)
+bones/34/position = Vector3(1.82708e-09, 0.126328, 3.72671e-08)
+bones/34/rotation = Quaternion(6.65928e-08, 0.061515, 2.14284e-08, 0.998106)
+bones/35/position = Vector3(7.08441e-08, 0.126328, -9.53587e-08)
+bones/35/rotation = Quaternion(0.333141, 0.0615146, -0.0217869, 0.940616)
+bones/36/position = Vector3(1.48401e-08, 0.117103, -9.68184e-08)
+bones/36/rotation = Quaternion(-9.66689e-08, 0.0372259, 7.27637e-08, 0.999307)
+bones/37/position = Vector3(9.32047e-08, 0.117103, -4.1474e-08)
+bones/37/rotation = Quaternion(-0.0602291, 0.0371595, 0.0714294, 0.994932)
+
+[node name="Cube" parent="Hand/rig_deform/Skeleton3D" index="0"]
+surface_material_override/0 = ExtResource("3_xhhmi")
+surface_material_override/1 = ExtResource("4_q0qeo")
+
+[node name="AnimationPlayer" parent="Hand" index="1"]
+callback_mode_process = 2
+
+[editable path="Hand"]

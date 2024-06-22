@@ -1,6 +1,8 @@
 class_name Player
 extends CharacterBody3D
 
+signal game_over
+
 const DEFAULT_HEALTH : int = 2
 const MAX_HEALTH : int = DEFAULT_HEALTH
 
@@ -48,7 +50,7 @@ func add_points():
 
 func die():
 	# replace with actual death sequence
-	get_tree().reload_current_scene()
+	game_over.emit()
 
 func _physics_process(delta):
 	%CoordsLabel.set_text("Health: " + str(current_health))

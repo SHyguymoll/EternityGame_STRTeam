@@ -1,9 +1,10 @@
-[gd_scene load_steps=15 format=3 uid="uid://br76acg3nulm6"]
+[gd_scene load_steps=16 format=3 uid="uid://br76acg3nulm6"]
 
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_sth8l"]
 [ext_resource type="PackedScene" uid="uid://chc56bofxwyry" path="res://scenes/enemy.tscn" id="2_2k1dn"]
 [ext_resource type="PackedScene" uid="uid://cvbltewnhlav" path="res://scenes/player.tscn" id="2_fh20e"]
 [ext_resource type="Script" path="res://scripts/enemydestroyer.gd" id="3_4ej1v"]
+[ext_resource type="PackedScene" uid="uid://drxj5r11bcqoh" path="res://scenes/ragdollhand.tscn" id="3_myhui"]
 [ext_resource type="Texture2D" uid="uid://diis7i7h681hd" path="res://assets/models/game_ready/textures/road.png" id="3_phtc3"]
 [ext_resource type="PackedScene" uid="uid://cycjr6yu0xbm" path="res://assets/models/dev/CarWindow.gltf" id="5_d37mi"]
 
@@ -35,6 +36,7 @@ size = Vector3(50, 22.1912, 21.8611)
 [node name="Game" type="Node3D"]
 script = ExtResource("1_sth8l")
 enemy_scene = ExtResource("2_2k1dn")
+ragdoll = ExtResource("3_myhui")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_77kwg")
@@ -87,4 +89,54 @@ shape = SubResource("BoxShape3D_ahdf0")
 [node name="CarWindow" parent="." instance=ExtResource("5_d37mi")]
 transform = Transform3D(0.26, 0, 0, 0, 0.26, 0, 0, 0, 0.26, 0, -0.33, 4.325)
 
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 42.0
+offset_top = 27.0
+offset_right = -42.0
+offset_bottom = -27.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0.0666667)
+
+[node name="Label" type="Label" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 23.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 101
+text = "Daydream Over!"
+horizontal_alignment = 1
+
+[node name="ScoreLabel" type="Label" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 176.12
+offset_bottom = 314.12
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 81
+text = "Time Lasted:"
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 314.0
+offset_top = -201.0
+offset_right = -314.0
+offset_bottom = -91.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 61
+text = "Back to Menu"
+
+[connection signal="game_over" from="Player" to="." method="_on_player_game_over"]
 [connection signal="area_entered" from="EnemyDestroyer" to="." method="_on_enemy_destroyer_area_entered"]
+[connection signal="pressed" from="ColorRect/Button" to="." method="_on_button_pressed"]
