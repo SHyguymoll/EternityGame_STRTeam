@@ -57,8 +57,8 @@ func _enemy_hit_player(player_area: Area3D):
 func _on_player_game_over() -> void:
 	$DeathSound.play()
 	var ragdo = ragdoll.instantiate()
-	ragdo.global_position = $Player.global_position
 	add_child(ragdo)
+	ragdo.global_position = $Player.global_position
 	$Player.queue_free()
 	$ColorRect/ScoreLabel.text = "Time Lasted: \n" + ("%.2f" % time_in_game) + " Seconds"
 	$ColorRect.visible = true

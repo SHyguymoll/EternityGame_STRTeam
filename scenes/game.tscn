@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://br76acg3nulm6"]
+[gd_scene load_steps=16 format=3 uid="uid://br76acg3nulm6"]
 
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_sth8l"]
 [ext_resource type="PackedScene" uid="uid://chc56bofxwyry" path="res://scenes/enemy.tscn" id="2_2k1dn"]
@@ -9,12 +9,11 @@
 [ext_resource type="PackedScene" uid="uid://cycjr6yu0xbm" path="res://assets/models/dev/CarWindow.gltf" id="5_d37mi"]
 [ext_resource type="AudioStream" uid="uid://opmgnv7r47mf" path="res://assets/audio/sound_effects/game_over.wav" id="8_xie1j"]
 
-[sub_resource type="Sky" id="Sky_ewpfr"]
-
 [sub_resource type="Environment" id="Environment_77kwg"]
-sky = SubResource("Sky_ewpfr")
+background_mode = 1
+background_color = Color(0.627451, 0.74902, 1, 1)
 ambient_light_source = 2
-ambient_light_color = Color(0.662745, 0.662745, 0.662745, 1)
+ambient_light_color = Color(1, 1, 1, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_olwsu"]
 albedo_texture = ExtResource("3_phtc3")
@@ -91,6 +90,7 @@ shape = SubResource("BoxShape3D_ahdf0")
 transform = Transform3D(0.26, 0, 0, 0, 0.26, 0, 0, 0, 0.26, 0, -0.33, 4.325)
 
 [node name="ColorRect" type="ColorRect" parent="."]
+visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
