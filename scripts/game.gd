@@ -30,6 +30,15 @@ func _process(delta: float) -> void:
 		time_since_enemy = 0.5
 
 
+@onready var background_elements = [preload("res://assets/models/game_ready/House.gltf")]
+@onready var background_script = preload("res://scripts/background.gd")
+
+func spawn_background_element():
+	var new_element : Node3D = background_elements.pick_random().instantiate()
+	new_element.set_script(background_script)
+	$BackgroundElements.add_child(new_element)
+
+
 func _on_enemy_destroyer_area_entered(area: Area3D) -> void:
 	area.queue_free()
 
@@ -48,3 +57,7 @@ func _on_player_game_over() -> void:
 
 func _on_button_pressed() -> void:
 	get_tree().change_scene_to_file("res://scenes/menu.tscn")
+
+
+func _on_background_element_timer_timeout() -> void:
+	spawn_background_element()
