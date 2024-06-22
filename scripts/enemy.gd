@@ -9,17 +9,19 @@ func _ready() -> void:
 	for child in get_children():
 		if child is CollisionShape3D:
 			child.disabled = true
-		else:
+		elif child is Node3D:
 			child.visible = false
 	match enemy_type:
 		EnemyTypes.JUMPING:
 			$JumpObstacle.visible = true
 			$JumpShape.disabled = false
 			$PointsArea/JumpPointsShape.disabled = false
+			$JumpSound.play()
 		EnemyTypes.DODGING:
 			$DodgeObstacle.visible = true
 			$DodgeShape.disabled = false
 			$PointsArea/DodgePointsShape.disabled = false
+			$DodgeSound.play()
 
 
 func _process(delta: float) -> void:

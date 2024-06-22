@@ -8,6 +8,7 @@ func _enter_state():
 	var tween = get_tree().create_tween()
 	tween.tween_property(host, "position:z", host.DODGE_DISTANCE, 0.1)
 	host.anim_state.travel("B_Dodge")
+	host.get_node("DodgeSound").play()
 	pass
 
 func _tick_state(delta):

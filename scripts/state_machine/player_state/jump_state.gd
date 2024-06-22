@@ -5,6 +5,7 @@ var buffered : bool = false
 
 func _enter_state():
 	host.anim_state.travel("B_JumpAir")
+	host.get_node("JumpSound").play()
 	reset_buffers()
 
 func _tick_state(delta):

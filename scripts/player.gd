@@ -31,19 +31,19 @@ func hurt():
 	anim_state.travel("B_Hurt")
 
 	if current_health - 1 < 0:
+		$DeathSound.play()
 		die()
 	else:
+		$HurtSound.play()
 		current_health -= 1
 
 func add_health(value : int):
-	if not current_health + value > MAX_HEALTH:
-		current_health += value
-	else:
-		current_health = MAX_HEALTH
+	$HealSound.play()
+	current_health = min(current_health + value, MAX_HEALTH)
 
 func add_points():
 	points += 1
-	if points % 50 == 0:
+	if points % 10 == 0:
 		add_health(1)
 
 func die():

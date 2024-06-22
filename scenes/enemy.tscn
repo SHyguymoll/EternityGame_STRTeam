@@ -1,8 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://chc56bofxwyry"]
+[gd_scene load_steps=9 format=3 uid="uid://chc56bofxwyry"]
 
 [ext_resource type="Script" path="res://scripts/enemy.gd" id="1_bnu0r"]
 [ext_resource type="PackedScene" uid="uid://cw0jbwacidkhf" path="res://assets/models/game_ready/Car.gltf" id="2_o34yd"]
 [ext_resource type="PackedScene" uid="uid://da0ndxx72ht73" path="res://assets/models/game_ready/Telephone Pole.gltf" id="3_aq5tk"]
+[ext_resource type="AudioStream" uid="uid://cwcb46bvbbnf2" path="res://assets/audio/sound_effects/car.wav" id="4_yxkrc"]
+[ext_resource type="AudioStream" uid="uid://dpvq5v6kuwkhn" path="res://assets/audio/sound_effects/pole.wav" id="5_lon1t"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_5lmok"]
 size = Vector3(0.340822, 1.23969, 1.47168)
@@ -48,6 +50,14 @@ disabled = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.03754)
 shape = SubResource("BoxShape3D_jwu8h")
 disabled = true
+
+[node name="JumpSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_yxkrc")
+volume_db = -9.369
+
+[node name="DodgeSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_lon1t")
+volume_db = -6.558
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
