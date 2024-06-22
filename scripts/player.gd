@@ -28,6 +28,8 @@ func _ready():
 
 func hurt():
 	run_speed = 0.0
+	anim_state.travel("B_Hurt")
+
 	if current_health - 1 < 0:
 		die()
 	else:
@@ -52,3 +54,11 @@ func _physics_process(delta):
 	%CoordsLabel.set_text("Health: " + str(current_health))
 	%StateLabel.set_text("Score: " + str(points))
 	move_and_slide()
+
+
+func _on_animation_tree_animation_finished(anim_name: StringName) -> void:
+	if anim_name == "B_Hurt":
+		if state_machine.current_state.name == "jump":
+			anim_state.travel("B_JumpAir")
+		else:
+			anim_state.travel("RunWalkBlend")
